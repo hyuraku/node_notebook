@@ -16,7 +16,7 @@ deleteMe()
 
 
 // destructring
-const student = {
+const student_1 = {
   name: 'Tim',
   age: 18,
   glasses: true,
@@ -24,15 +24,34 @@ const student = {
   sport: 'Baseball'
 }
 
-const introduction = ({name, age, sport}) => {
+const introduction_1 = ({name, age, sport}) => {
   return `I am ${name} and ${age} years old, I like ${sport}`
 }
 // OR
-const introduction = (person) => {
+const introduction_2 = (person) => {
   const {name, age, sport} = person
   return `I am ${name} and ${age} years old, I like ${sport}`
 }
 
-console.log(introduction(student))
+console.log(introduction_1(student_1))
+console.log(introduction_2(student_1))
 
+// template-literals
+const student_2 = {
+  name: 'Tim',
+  age: 18,
+  favorite: ['language', 'math'],
+  height: 180
+}
 
+const {name, age, favorite} = student_2
+let intro = `He is ${name} and ${age} years old, he is good at ${favorite.join(' and ')}`
+console.log(intro)
+
+const aboutAge = (str,age) => {
+  const ageStr = age > 20 ? 'old' : 'young';
+  return `${str[0]}${ageStr} at ${age} years`
+}
+
+const intro_2 = aboutAge`He is ${student_2.age}`
+console.log(intro_2)
