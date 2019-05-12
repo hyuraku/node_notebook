@@ -6,6 +6,7 @@ const baz = {name: 'Mark',age: 25, nervous: false}
 
 console.log('%c my friend', "color: blue;") // show 'my friend' in blur 
 console.log({foo, bar, baz})
+
 console.table([foo,bar,baz])
 
 // Stack Trace log
@@ -55,3 +56,12 @@ const aboutAge = (str,age) => {
 
 const intro_2 = aboutAge`He is ${student_2.age}`
 console.log(intro_2)
+
+// sperad-syntax
+const student_3 = {name: 'Tom'}
+const result = {language: 80, math: 90, science: 75}
+
+const student_3_result = {...student_3, ...result}
+const student_3_result2 = {...student_3, history: 60}
+console.log(student_3_result)
+student_3_result2
