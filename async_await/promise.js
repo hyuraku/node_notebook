@@ -29,9 +29,35 @@ function createPost(post) {
   })
 }
 
-// createPost({ title: "Post Three", body: 'This is post three' })
-//   .then(getPosts)
-//   .catch(err => console.log(err))
+createPost({ title: "Post Three", body: 'This is post three' })
+  .then(getPosts)
+
+// promise method chain
+function getName() {
+  return new Promise(resolve => {
+    setTimeout(()=>{
+      resolve('Tim');
+    }, 2000)
+  })
+}
+
+function getAge() {
+  return new Promise(resolve=>{
+    setTimeout(() => {
+      resolve(20);
+    }, 2000);
+  })
+}
+
+getName()
+.then(name => {
+  console.log(name)
+})
+.then(getAge)
+.then(age =>{
+  console.log(age)
+})
+
 
 // Promise.all
 const promise1 = Promise.resolve('Hello world');
@@ -41,6 +67,12 @@ const promise3 = new Promise((resolve,rejest)=>
 )
 
 Promise.all([promise1,promise2,promise3]).then(values => console.log(values));
+Promise.all([getName(),getAge()])
+.then(([name,age]) => {
+  console.log(name);
+  console.log(age);
+ }
+)
 
 
 // Async / Await
