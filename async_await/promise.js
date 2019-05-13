@@ -82,3 +82,15 @@ async function init(){
 }
 
 init();
+
+
+let myPromise = new Promise(resolve => {
+  resolve('Tim')
+})
+
+async function main(){
+  let name = await myPromise;
+  // name
+}
+let name = main()
+console.log(name)
