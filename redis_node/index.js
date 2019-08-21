@@ -36,7 +36,22 @@ async function getRepos(req, res, next){
   }
 }
 
-app.get('/repos/:username', getRepos);
+// Cache middleware
+function cache(req, res, next){
+  const {username} = req.params;
+
+  client.get(username, (err, data)=>{
+    if(err)throwerr;
+    if(data != null){
+      console.log('get from cache')
+      res.send(setResponse(username, data));
+    }else{
+      next();
+    }
+  })
+}
+
+app.get('/repos/:username',cache, getRepos);
 
 app.listen(5000, ()=>{
   console.log(`App listing on port ${PORT}`)
